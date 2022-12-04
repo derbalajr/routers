@@ -14,7 +14,7 @@ Fetch data from routes to permissions table and create pivot table between permi
 ## Installation
 1. Run
     ```
-    composer require acmepackage/routers
+    composer require derbala/routers
     ```
 2. Publish vendor
     ```
