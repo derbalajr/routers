@@ -13,7 +13,7 @@ class FetchAppRoutesCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'fetch:routes {routes}';
+    protected $signature = 'fetch:routes {routes} {allow_trans}';
 
     /**
      * The console command description.
@@ -32,6 +32,7 @@ class FetchAppRoutesCommand extends Command
         //DB::table('app_routes')->delete();
         //DB::table('permissions')->delete();
         $routes = $this->argument('routes');
+        $allow_trans = $this->argument('allow_trans');
         $routes = explode("_",$routes);
         $routeCollection = Route::getRoutes();
         foreach ($routeCollection as $value) {
@@ -70,9 +71,13 @@ class FetchAppRoutesCommand extends Command
                                 $txt = ucfirst($name[0]);
                         }
                         if(!empty($txt)){
+                            $label = $txt;
+                            if($allow_trans){
+                                $label = '{"en":"'.$txt.'"}';
+                            }
                             DB::table('permissions')->insert([
                                 'name' => strtolower(str_replace(' ', '_', $txt)),
-                                'label' => $txt,
+                                'label' => $label,
                             ]);
                         }
                     }
