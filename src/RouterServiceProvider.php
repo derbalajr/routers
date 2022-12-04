@@ -1,5 +1,5 @@
 <?php
-namespace derbala\Routers;
+namespace derbala\routers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -20,8 +20,8 @@ class RouterServiceProvider extends ServiceProvider
     public function register()
     {
         $this->commands(
-            'derbala\Routers\FetchAppRoutesCommand',
-            'derbala\Routers\FetchPermissionRoutesCommand'
+            'derbala\routers\FetchAppRoutesCommand',
+            'derbala\routers\FetchPermissionRoutesCommand'
         );
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace derbala\Routers;
+namespace derbala\routers;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
