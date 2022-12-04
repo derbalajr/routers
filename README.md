@@ -18,7 +18,7 @@ Fetch data from routes to permissions table and create pivot table between permi
     ```
 2. Publish vendor
     ```
-    php artisan vendor:publish --all
+    php artisan vendor:publish --provider="derbala\routers\RouterServiceProvider"
     ```
 3. Run migrate:
     ```
