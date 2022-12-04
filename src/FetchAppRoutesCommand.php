@@ -73,7 +73,7 @@ class FetchAppRoutesCommand extends Command
                         if(!empty($txt)){
                             $label = $txt;
                             if($allow_trans){
-                                $label = '{"en":"'.$txt.'"}';
+                                $label = '{"' . \App::getLocale() . '":"' . $txt . '"}';
                             }
                             DB::table('permissions')->insert([
                                 'name' => strtolower(str_replace(' ', '_', $txt)),
