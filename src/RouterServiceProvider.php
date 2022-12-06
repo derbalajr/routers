@@ -15,6 +15,9 @@ class RouterServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../publish/migrations/' => database_path('migrations'),
         ]);
+        $this->publishes([
+            __DIR__ . '/../publish/Models/' => app_path('Models'),
+        ]);
     }
 
     public function register()
