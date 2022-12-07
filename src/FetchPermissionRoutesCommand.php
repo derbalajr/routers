@@ -41,7 +41,7 @@ class FetchPermissionRoutesCommand extends Command
                     if($arrPermission[0]== 'create'){
                         if( $name[2] == 'create') {
                             if(($name[1] ?? null) == $arrPermission[1]) {
-                            DB::table('permission_routes')->insert([
+                            DB::table('route_permission')->insert([
                                 'permission_id' => $i+1,
                                 'route_id' => $key+1,
                             ]);
@@ -49,7 +49,7 @@ class FetchPermissionRoutesCommand extends Command
                         }
                         elseif( $name[2] == 'store') {
                             if(($name[1] ?? null) == $arrPermission[1]) {
-                            DB::table('permission_routes')->insert([
+                            DB::table('route_permission')->insert([
                                 'permission_id' => $i+1,
                                 'route_id' => $key+1,
                             ]);
@@ -57,7 +57,7 @@ class FetchPermissionRoutesCommand extends Command
                         }
                         elseif( $name[2] == 'index') {
                             if(($name[1] ?? null) == $arrPermission[1]) {
-                            DB::table('permission_routes')->insert([
+                            DB::table('route_permission')->insert([
                                 'permission_id' => $i+1,
                                 'route_id' => $key+1,
                             ]);
@@ -68,7 +68,7 @@ class FetchPermissionRoutesCommand extends Command
                     elseif($arrPermission[0]== 'edit'){
                         if( $name[2] == 'edit') {
                             if(($name[1] ?? null) == $arrPermission[1]) {
-                            DB::table('permission_routes')->insert([
+                            DB::table('route_permission')->insert([
                                 'permission_id' => $i+1,
                                 'route_id' => $key+1,
                             ]);
@@ -76,7 +76,7 @@ class FetchPermissionRoutesCommand extends Command
                         }
                         elseif( $name[2] == 'update') {
                             if(($name[1] ?? null) == $arrPermission[1]) {
-                            DB::table('permission_routes')->insert([
+                            DB::table('route_permission')->insert([
                                 'permission_id' => $i+1,
                                 'route_id' => $key+1,
                             ]);
@@ -84,7 +84,7 @@ class FetchPermissionRoutesCommand extends Command
                         }
                         elseif( $name[2] == 'index') {
                             if(($name[1] ?? null) == $arrPermission[1]) {
-                            DB::table('permission_routes')->insert([
+                            DB::table('route_permission')->insert([
                                 'permission_id' => $i+1,
                                 'route_id' => $key+1,
                             ]);
@@ -95,7 +95,7 @@ class FetchPermissionRoutesCommand extends Command
                     elseif($arrPermission[0]== 'destroy'){
                         if( $name[2] == 'destroy') {
                             if(($name[1] ?? null) == $arrPermission[1]) {
-                            DB::table('permission_routes')->insert([
+                            DB::table('routes')->insert([
                                 'permission_id' => $i+1,
                                 'route_id' => $key+1,
                             ]);
@@ -103,7 +103,7 @@ class FetchPermissionRoutesCommand extends Command
                         }
                         elseif( $name[2] == 'index') {
                             if(($name[1] ?? null) == $arrPermission[1]) {
-                            DB::table('permission_routes')->insert([
+                            DB::table('routes')->insert([
                                 'permission_id' => $i+1,
                                 'route_id' => $key+1,
                             ]);
@@ -114,7 +114,7 @@ class FetchPermissionRoutesCommand extends Command
                     elseif($arrPermission[0] == 'list'){
                         if( $name[2] == 'index') {
                             if(($name[1] ?? null) == $arrPermission[1]) {
-                            DB::table('permission_routes')->insert([
+                            DB::table('route_permission')->insert([
                                 'permission_id' => $i+1,
                                 'route_id' => $key+1,
                             ]);
@@ -136,7 +136,7 @@ class FetchPermissionRoutesCommand extends Command
             }
             foreach ($permissions as $i=>$permission) {
                 if ($permission->label == $txt) {
-                    DB::table('permission_routes')->insert([
+                    DB::table('route_permission')->insert([
                         'permission_id' => $i+1,
                         'route_id' => $key+1,
                     ]);

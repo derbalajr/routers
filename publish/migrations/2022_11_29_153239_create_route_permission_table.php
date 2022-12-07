@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('permission_routes', function (Blueprint $table) {
+        Schema::create('route_permission', function (Blueprint $table) {
             $table->unsignedBigInteger('permission_id');
             $table->foreign('permission_id')
             ->references('id')
@@ -37,9 +37,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('permission_routes', function (Blueprint $table) {
+        Schema::table('route_permission', function (Blueprint $table) {
             $table->dropForeign(['permission_id', 'route_id']);
         });
-        Schema::dropIfExists('permission_routes');
+        Schema::dropIfExists('route_permission');
     }
 };

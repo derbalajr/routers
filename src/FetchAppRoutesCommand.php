@@ -36,7 +36,7 @@ class FetchAppRoutesCommand extends Command
         $routes = explode("_",$routes);
         $routeCollection = Route::getRoutes();
         foreach ($routeCollection as $value) {
-            DB::table('app_routes')->insert([
+            DB::table('routes')->insert([
                 'method'=> $value->methods()[0],
                 'route'=> $value->uri(),
                 'name'=> $value->getName(),
