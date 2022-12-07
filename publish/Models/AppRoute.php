@@ -12,6 +12,8 @@ class AppRoute extends Model
     use HasFactory;
     use LogsActivity;
 
+    protected $table = 'app_routes';
+
     protected $fillable = ['method', 'route','name','action'];
 
     public function getDescriptionForEvent($eventName)
