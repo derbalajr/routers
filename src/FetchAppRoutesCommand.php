@@ -76,7 +76,7 @@ class FetchAppRoutesCommand extends Command
                                 $label = '{"' . \App::getLocale() . '":"' . $txt . '"}';
                             }
                             DB::table('permissions')->insert([
-                                'name' => $value->getName(),
+                                'name' =>$value->getName(),
                                 'label' => $label,
                             ]);
                         }

@@ -33,21 +33,14 @@ class FetchPermissionRoutesCommand extends Command
         $routeCollection = Route::getRoutes();
         $permissions = DB::select('select * from permissions');
         foreach ($permissions as $i=>$permission) {
-            $arrPermission = explode('_',$permission->name);
+            $arrPermission = explode('.',$permission->name);
             foreach ($routeCollection as $key=>$value) {
                 $name = explode(".",($value->getName()));
-                if(count($name)>2) {
+                if(count($name)>2 && count($arrPermission)>2) {
                     //if the permission equal 'create' we will assign create, store and index routes to this permission
-                    if($arrPermission[0]== 'create'){
-                        if( $name[2] == 'create') {
-                            if(($name[1] ?? null) == $arrPermission[1]) {
-                            DB::table('permission_route')->insert([
-                                'permission_id' => $i+1,
-                                'route_id' => $key+1,
-                            ]);
-                            }
-                        }
-                        elseif( $name[2] == 'store') {
+                    if($arrPermission[2]== 'create'){
+
+                        if( $name[2] == 'store') {
                             if(($name[1] ?? null) == $arrPermission[1]) {
                             DB::table('permission_route')->insert([
                                 'permission_id' => $i+1,
@@ -65,16 +58,8 @@ class FetchPermissionRoutesCommand extends Command
                         }
                     }
                     //if the permission equal 'edit' we will assign edit, update and index routes to this permission
-                    elseif($arrPermission[0]== 'edit'){
-                        if( $name[2] == 'edit') {
-                            if(($name[1] ?? null) == $arrPermission[1]) {
-                            DB::table('permission_route')->insert([
-                                'permission_id' => $i+1,
-                                'route_id' => $key+1,
-                            ]);
-                            }
-                        }
-                        elseif( $name[2] == 'update') {
+                    elseif($arrPermission[2]== 'edit'){
+                        if( $name[2] == 'update') {
                             if(($name[1] ?? null) == $arrPermission[1]) {
                             DB::table('permission_route')->insert([
                                 'permission_id' => $i+1,
@@ -92,29 +77,10 @@ class FetchPermissionRoutesCommand extends Command
                         }
                     }
                     //if the permission equal 'destroy' we will assign destroy and index routes to this permission
-                    elseif($arrPermission[0]== 'destroy'){
-                        if( $name[2] == 'destroy') {
-                            if(($name[1] ?? null) == $arrPermission[1]) {
-                            DB::table('routes')->insert([
-                                'permission_id' => $i+1,
-                                'route_id' => $key+1,
-                            ]);
-                            }
-                        }
-                        elseif( $name[2] == 'index') {
-                            if(($name[1] ?? null) == $arrPermission[1]) {
-                            DB::table('routes')->insert([
-                                'permission_id' => $i+1,
-                                'route_id' => $key+1,
-                            ]);
-                            }
-                        }
-                    }
-                    //if the permission equal 'list' we will assign index route to this permission
-                    elseif($arrPermission[0] == 'list'){
+                    elseif($arrPermission[2]== 'destroy'){
                         if( $name[2] == 'index') {
                             if(($name[1] ?? null) == $arrPermission[1]) {
-                            DB::table('permission_route')->insert([
+                            DB::table('routes')->insert([
                                 'permission_id' => $i+1,
                                 'route_id' => $key+1,
                             ]);
@@ -125,17 +91,8 @@ class FetchPermissionRoutesCommand extends Command
             }
         }
         foreach ($routeCollection as $key=>$value) {
-            $name = explode(".",($value->getName()));
-            if(count($name)>1){
-                if(!empty($value->getName() !== 'admin.')){
-                    $txt = ucfirst($name[0]) . ' ' . ucfirst($name[1]);
-                }
-            }
-            elseif(count($name) == 1){
-                    $txt = ucfirst($name[0]);
-            }
             foreach ($permissions as $i=>$permission) {
-                if ($permission->label == $txt) {
+                if ($permission->name == $value->getName()) {  
                     DB::table('permission_route')->insert([
                         'permission_id' => $i+1,
                         'route_id' => $key+1,
