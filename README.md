@@ -20,6 +20,12 @@ Fetch data from routes to permissions table and create pivot table between permi
     ```
     php artisan vendor:publish --provider="derbala\routers\RouterServiceProvider"
     ```
+3. Add routes function to the permission model:
+    ```
+    public function routes(){
+        return $this->belongsToMany(Route::class)->withTimestamps();
+    }
+    ```
 3. Run migrate:
     ```
     php artisan migrate
