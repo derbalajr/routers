@@ -26,12 +26,13 @@ Fetch data from routes to permissions table and create pivot table between permi
     ```
 4. Run the following command to fetch data to routes and permissions tables:
     ```
-    php artisan fetch:routes {route name}
+    php artisan fetch:routes {route name} {allow translate}
     ```
     if you want to fetch many routes so you need to put '_' between routes name.
+    to allow translate put 1 in second arugment, otherwise, put 0.
     For example, if you have 3 routes called admin, metadata and dashboard and you want to fetch them you will run the follwing command:
     ```    
-    php artisan fetch:routes admin_metadata_dashboard
+    php artisan fetch:routes admin_metadata_dashboard 1
     ```
 5. Run the following command to create pivot table between permissions and routes:
     ```    
