@@ -50,9 +50,9 @@ class FetchAppRoutesCommand extends Command
             foreach ($routes as $route){
                 //check if the route url equals to the route name in the command
                 if($routeURL[0] == $route) {
-                    if ($methodName == 'GET') {
+                    if ($methodName == 'GET' ) {
                         //check the name if it contains more that 2 elements
-                        if(count($name)>2) {
+                        if(count($name)>2 && $name[2] != 'show') {
                             if($name[2] == 'index') {
                                 $txt = ucfirst('list') . ' ' . ucfirst($name[1]);
                             }
