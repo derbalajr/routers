@@ -32,6 +32,17 @@ class FetchPermissionRoutesCommand extends Command
         // DB::table('permission_routes')->truncate();
         $routeCollection = Route::getRoutes();
         $permissions = DB::select('select * from permissions');
+        foreach ($routeCollection as $key=>$value) {
+            foreach ($permissions as $i=>$permission) {
+                if ($permission->name == $value->getName()) {  
+                    DB::table('permission_route')->insert([
+                        'permission_id' => $i+1,
+                        'route_id' => $key+1,
+                    ]);
+                }
+                continue;
+            }
+        }
         foreach ($permissions as $i=>$permission) {
             $arrPermission = explode('.',$permission->name);
             foreach ($routeCollection as $key=>$value) {
@@ -88,17 +99,6 @@ class FetchPermissionRoutesCommand extends Command
                         }
                     }
                 }
-            }
-        }
-        foreach ($routeCollection as $key=>$value) {
-            foreach ($permissions as $i=>$permission) {
-                if ($permission->name == $value->getName()) {  
-                    DB::table('permission_route')->insert([
-                        'permission_id' => $i+1,
-                        'route_id' => $key+1,
-                    ]);
-                }
-                continue;
             }
         }
         return Command::SUCCESS;
