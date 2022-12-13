@@ -91,7 +91,7 @@ class FetchPermissionRoutesCommand extends Command
                     elseif($arrPermission[2]== 'destroy'){
                         if( $name[2] == 'index') {
                             if(($name[1] ?? null) == $arrPermission[1]) {
-                            DB::table('routes')->insert([
+                            DB::table('permission_route')->insert([
                                 'permission_id' => $i+1,
                                 'route_id' => $key+1,
                             ]);
