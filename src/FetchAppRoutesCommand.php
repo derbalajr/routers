@@ -52,7 +52,7 @@ class FetchAppRoutesCommand extends Command
                 if($routeURL[0] == $route) {
                     if ($methodName == 'GET' ) {
                         //check the name if it contains more that 2 elements
-                        if(count($name)>2 && $name[2] != 'show') {
+                        if(count($name)>2) {
                             if($name[2] == 'index') {
                                 $txt = ucfirst('list') . ' ' . ucfirst($name[1]);
                             }
