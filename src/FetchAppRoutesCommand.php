@@ -77,6 +77,7 @@ class FetchAppRoutesCommand extends Command
                             }
                             DB::table('permissions')->insert([
                                 'name' =>$value->getName(),
+                                'route' => $value->uri(),
                                 'label' => $label,
                             ]);
                         }
