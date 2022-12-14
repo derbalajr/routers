@@ -28,6 +28,7 @@ return new class extends Migration
     {
         Schema::table('permissions', function (Blueprint $table) {
             $table->dropColumn('route');
+            $table->dropColumn('icon');
         });
     }
 };
