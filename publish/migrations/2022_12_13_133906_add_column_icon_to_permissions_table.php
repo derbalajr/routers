@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('permissions', function (Blueprint $table) {
-            $table->string('route');
+            $table->string('icon');
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('permissions', function (Blueprint $table) {
-            $table->dropColumn('route');
+            $table->dropColumn('icon');
         });
     }
 };
