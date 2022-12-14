@@ -79,6 +79,7 @@ class FetchAppRoutesCommand extends Command
                                 'name' =>$value->getName(),
                                 'route' => $value->uri(),
                                 'label' => $label,
+                                'icon' => 'fa fa-list',
                             ]);
                         }
                     }
