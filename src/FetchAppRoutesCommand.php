@@ -80,6 +80,8 @@ class FetchAppRoutesCommand extends Command
                                 'route' => $value->uri(),
                                 'label' => $label,
                                 'icon' => 'fa fa-list',
+                                'masked_link' => $value->getName(),
+                                'masked_label' => $txt,
                             ]);
                         }
                     }
